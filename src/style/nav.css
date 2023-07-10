@@ -1,0 +1,16 @@
+nav .active {
+  text-decoration: underline;
+}
+
+li {
+  list-style-type: none;
+}
+
+li a {
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
