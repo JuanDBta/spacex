@@ -4,6 +4,7 @@ nav .active {
 
 li {
   list-style-type: none;
+  color: black;
 }
 
 li a {
@@ -13,4 +14,9 @@ li a {
 nav {
   display: flex;
   gap: 1rem;
+}
+
+.missions {
+  border-right: 2px black solid;
+  padding-right: 1vw;
 }
