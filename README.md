@@ -2,10 +2,10 @@
 
 <div align="center">
  
-  <img src="src\logo.svg" alt="logo" width="160"  height="auto">
+  <img src="src\spacex-logo.png" alt="logo" width="200"  height="auto">
   <br/>
 
-  <h3><b>Bookstore Website</b></h3>
+  <h3><b>Space Travelers Hub</b></h3>
 
 </div>
 
@@ -34,9 +34,9 @@
 - [📝 License](#license)
 
 
-# 📖 Bookstore Website <a name="about-project"></a>
+# 📖 Space Travelers Hub <a name="about-project"></a>
 
-**[Bookstore Website]** The Bookstore is a website built with React & Redux. This in an simplified version that allows you to: Display a list of books, Add a book, Remove a selected book.
+**[Space Travelers Hub]** In this website, you will be working with the real live data from the SpaceX API. We built a web application for a company that provides commercial and scientific space travel services. The application will allow users to book rockets and join selected space missions.
 
 ## 🛠 Built With <a name="built-with"></a>
 1- REACT<br>
@@ -77,7 +77,7 @@ Coming soon!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Bookstore](https://bookstore-79rb.onrender.com/)
+Coming soon...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -101,7 +101,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone "https://github.com/JuanDBta/bookstore-project.git"
+  git clone "https://github.com/JuanDBta/spacex.git"
 ```
 ### Install
 
@@ -135,6 +135,12 @@ You can deploy this project using: Project not yet complete
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 👥 Authors <a name="authors"></a>
+
+👤 **Micronaut BETEL ANDARGE**
+
+- GitHub: [@JuanDBta](https://github.com/beteland123)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/betel-andarge-1b9446223)
+
 
 👤 **Micronaut JUAN DAVID DIAZ**
 
