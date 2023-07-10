@@ -5,7 +5,7 @@
   <img src="src\spacex-logo.png" alt="logo" width="200"  height="auto">
   <br/>
 
-  <h3><b>Space Travelers Hub</b></h3>
+  <h3><b>Space Traveler's Hub</b></h3>
 
 </div>
 
@@ -34,9 +34,9 @@
 - [📝 License](#license)
 
 
-# 📖 Space Travelers Hub <a name="about-project"></a>
+# 📖 Space Traveler's Hub <a name="about-project"></a>
 
-**[Space Travelers Hub]** In this website, you will be working with the real live data from the SpaceX API. We built a web application for a company that provides commercial and scientific space travel services. The application will allow users to book rockets and join selected space missions.
+**[Space Traveler's Hub]** In this website, you will be working with the real live data from the SpaceX API. We built a web application for a company that provides commercial and scientific space travel services. The application will allow users to book rockets and join selected space missions.
 
 ## 🛠 Built With <a name="built-with"></a>
 1- REACT<br>
