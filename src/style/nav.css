@@ -8,6 +8,7 @@ li {
 
 li a {
   text-decoration: none;
+  color: black;
 }
 
 nav {
@@ -18,8 +19,4 @@ nav {
 .missions {
   border-right: 2px black solid;
   padding-right: 1vw;
-}
-
-li {
-  color: black;
 }
