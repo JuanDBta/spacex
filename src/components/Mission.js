@@ -39,13 +39,15 @@ function Mission() {
               <td key={mission.mission_id} className="mission-name">{mission.name}</td>
               <td key={mission.mission_id} className="description">{mission.description}</td>
               <td key={mission.mission_id}>
-                {mission.reserved === false ? 'Not A MEMBER' : 'ACTIVE MEMBER'}
+
+                {mission.reserved === false
+                  ? <span className="notmemebr">Not A MEMBER</span> : <span className="memeber">ACTIVE MEMBER</span>}
               </td>
               <td key={mission.mission_id}>
                 {mission.reserved === false ? (
-                  <button type="button">Join Mission</button>
+                  <button type="button" className="join">JOIN MISSION</button>
                 ) : (
-                  <button type="button">Leave Mission</button>
+                  <button type="button" className="leave">LEAVE MISSION</button>
                 )}
               </td>
             </tr>

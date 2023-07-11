@@ -1,24 +1,60 @@
-.tableDiv{
-    padding: 4vw;
-
+.tableDiv {
+  padding: 4vw;
 }
+
 th,
 td {
   border: 1px solid black;
   padding: 8px;
 }
+
 table {
-    border-collapse: collapse;
-  }
-  th,.mission-name{
-    font-weight: bold;
-  }
-  tr:nth-child(odd) {
-    background-color: #f2f2f2;
-  }
-  td.description {
-    width: 65%;
-  }
-  td.mission-name{
-    width: 10%;
-  }
+  border-collapse: collapse;
+}
+
+th,
+.mission-name {
+  font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+td.description {
+  width: 65%;
+}
+
+td.mission-name {
+  width: 10%;
+}
+
+.notmemebr {
+  display: inline-block;
+  background-color: rgb(83, 82, 82);
+  color: white;
+  padding: 0.2em 0.5em;
+  border: 2px solid black;
+}
+
+.memebr {
+  display: inline-block;
+  background-color: blue;
+  color: white;
+  padding: 0.2em 0.5em;
+  border: 2px solid black;
+}
+
+.join {
+  display: inline-block;
+  color: rgb(83, 82, 82);
+  padding: 0.5em 0.5em;
+  border: 2px solid rgb(83, 82, 82);
+}
+
+.leave {
+  display: inline-block;
+  color: red;
+  padding: 0.5em 0.5em;
+  border: 2px solid red;
+}
