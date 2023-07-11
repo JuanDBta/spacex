@@ -1,4 +1,4 @@
-function Missions() {
+function Mission() {
   return (<div>this is Mission page</div>);
 }
-export default Missions;
+export default Mission;
