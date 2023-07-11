@@ -3,6 +3,7 @@ import { useEffect, useMemo } from 'react';
 import {
   fetchmissions, getError, getLoading, getMissions,
 } from '../redux/missions/missionSlice';
+import '../style/mission.css';
 
 function Mission() {
   const dispatch = useDispatch();
@@ -22,9 +23,9 @@ function Mission() {
     return <div>error fetching data</div>;
   }
   return (
-    <div>
+    <div className="tableDiv">
       <table>
-        <thead>
+        <thead className="header">
           <tr>
             <th>Mission</th>
             <th>Description</th>
@@ -35,16 +36,18 @@ function Mission() {
         <tbody>
           {memoizedMissions.map((mission) => (
             <tr key={mission.id}>
-              <td key={mission.mission_id}>{mission.name}</td>
-              <td key={mission.mission_id}>{mission.description}</td>
+              <td key={mission.mission_id} className="mission-name">{mission.name}</td>
+              <td key={mission.mission_id} className="description">{mission.description}</td>
               <td key={mission.mission_id}>
-                {mission.reserved === false ? 'Not A MEMBER' : 'ACTIVE MEMBER'}
+
+                {mission.reserved === false
+                  ? <span className="notmemebr">Not A MEMBER</span> : <span className="memeber">ACTIVE MEMBER</span>}
               </td>
               <td key={mission.mission_id}>
                 {mission.reserved === false ? (
-                  <button type="button">Join Mission</button>
+                  <button type="button" className="join">JOIN MISSION</button>
                 ) : (
-                  <button type="button">Leave Mission</button>
+                  <button type="button" className="leave">LEAVE MISSION</button>
                 )}
               </td>
             </tr>
