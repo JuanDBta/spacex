@@ -23,7 +23,34 @@ function Mission() {
   }
   return (
     <div>
-     
+      <table>
+        <thead>
+          <tr>
+            <th>Mission</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Take action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {memoizedMissions.map((mission) => (
+            <tr key={mission.id}>
+              <td key={mission.mission_id}>{mission.name}</td>
+              <td key={mission.mission_id}>{mission.description}</td>
+              <td key={mission.mission_id}>
+                {mission.reserved === false ? 'Not A MEMBER' : 'ACTIVE MEMBER'}
+              </td>
+              <td key={mission.mission_id}>
+                {mission.reserved === false ? (
+                  <button type="button">Join Mission</button>
+                ) : (
+                  <button type="button">Leave Mission</button>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
     </div>
   );
