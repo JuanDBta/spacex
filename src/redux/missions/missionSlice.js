@@ -7,7 +7,14 @@ const initialState = {
   isloading: false,
   error: '',
 };
-
+export const fetchmissions = createAsyncThunk('missions/fetchmission', async () => {
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      return error.message;
+    }
+  });
 const missionSlice = createSlice({
   name: 'missions',
   initialState,
