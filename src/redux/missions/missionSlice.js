@@ -8,13 +8,13 @@ const initialState = {
   error: '',
 };
 export const fetchmissions = createAsyncThunk('missions/fetchmission', async () => {
-    try {
-      const response = await axios.get(url);
-      return response.data;
-    } catch (error) {
-      return error.message;
-    }
-  });
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    return error.message;
+  }
+});
 const missionSlice = createSlice({
   name: 'missions',
   initialState,
@@ -41,7 +41,7 @@ const missionSlice = createSlice({
       state.error = action.error.message;
     });
   },
- 
+
 });
 export const getMissions = (state) => state.missions.missions;
 export const getLoading = (state) => state.missions.isloading;
