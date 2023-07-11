@@ -14,6 +14,7 @@ export const getRockets = createAsyncThunk('rockets/getRockets', async () => {
     rocket_name: rocket.rocket_name,
     description: rocket.description,
     flickr_images: rocket.flickr_images,
+    reserved: false, // Agregamos la clave "reserved" inicializada en false
   }));
 });
 
