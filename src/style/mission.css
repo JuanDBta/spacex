@@ -1,0 +1,24 @@
+.tableDiv{
+    padding: 4vw;
+
+}
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+}
+table {
+    border-collapse: collapse;
+  }
+  th,.mission-name{
+    font-weight: bold;
+  }
+  tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  td.description {
+    width: 65%;
+  }
+  td.mission-name{
+    width: 10%;
+  }
