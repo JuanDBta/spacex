@@ -1,99 +1,42 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/qiKtD5mkwRN26fLwBUzY/books/';
-
-export const getBooks = createAsyncThunk('books/getBooks',
-  async (_, thunkAPI) => {
-    try {
-      const res = await axios(url);
-      const resp = res.data;
-      const array = Object.values(resp);
-      const id = Object.keys(resp);
-      const newArray = array.map((ele, i) => ({
-        ...ele[0],
-        item_id: id[i],
-      }));
-      return newArray;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  });
-
-export const addBooks = createAsyncThunk('books/addBooks',
-  async (newBook, thunkAPI) => {
-    try {
-      const res = await axios.post(url, newBook);
-      const addedBook = {
-        ...newBook,
-        item_id: res.data.name, // Assuming the response contains the item_id
-      };
-      thunkAPI.dispatch(getBooks());
-      return addedBook;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  });
-
-export const deleteBook = createAsyncThunk('books/deleteBook',
-  async (item_id, thunkAPI) => {// eslint-disable-line
-    try {
-      await axios.delete(`${url}${item_id}`);// eslint-disable-line
-      thunkAPI.dispatch(getBooks());
-      return item_id;// eslint-disable-line
-    } catch (error) {
-      const {
-        message, name, code, config, request,
-      } = error;
-      return thunkAPI.rejectWithValue({
-        message, name, code, config, request,
-      });
-    }
-  });
-
 const initialState = {
-  books: [],
+  rockets: [],
   isLoading: false,
-  error: undefined,
-  addNew: false,
-  deleted: false,
+  error: null,
 };
 
-const bookSlice = createSlice({
-  name: 'books',
+export const getRockets = createAsyncThunk('rockets/getRockets', async () => {
+  const response = await axios.get('https://api.spacexdata.com/v3/rockets');
+  return response.data.map((rocket) => ({
+    id: rocket.id,
+    rocket_name: rocket.rocket_name,
+    description: rocket.description,
+    flickr_images: rocket.flickr_images,
+  }));
+});
+
+const rocketsSlice = createSlice({
+  name: 'rockets',
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getBooks.pending, (state) => {
+      .addCase(getRockets.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
-      .addCase(getBooks.fulfilled, (state, { payload }) => {
+      .addCase(getRockets.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.books = payload;
+        state.error = null;
+        state.rockets = action.payload;
       })
-      .addCase(getBooks.rejected, (state, action) => {
+      .addCase(getRockets.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.name;
-      })
-      .addCase(addBooks.pending, (state) => {
-        state.addNew = undefined;
-      })
-      .addCase(addBooks.fulfilled, (state) => {
-        state.addNew = true;
-      })
-      .addCase(addBooks.rejected, (state) => {
-        state.addNew = false;
-      })
-      .addCase(deleteBook.pending, (state) => {
-        state.deleted = false;
-      })
-      .addCase(deleteBook.fulfilled, (state) => {
-        state.deleted = true;
-      })
-      .addCase(deleteBook.rejected, (state) => {
-        state.deleted = false;
+        state.error = action.error.message;
       });
   },
 });
 
-export default bookSlice.reducer;
+export default rocketsSlice.reducer;

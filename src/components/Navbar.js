@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../style/nav.css';
 
-function NAVBAR() {
+function Navbar() {
   return (
     <nav className="navbar">
       <li><NavLink to="/">Rockets</NavLink></li>
@@ -11,4 +11,4 @@ function NAVBAR() {
     </nav>
   );
 }
-export default NAVBAR;
+export default Navbar;
