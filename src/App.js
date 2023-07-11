@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Logo from './spacex-logo.png';
 import './App.css';
-import NAVBAR from './components/NAVBAR';
+import NAVBAR from './components/Navbar';
 import Profile from './components/Profile';
 import Rockets from './components/Rockets';
 import Mission from './components/Mission';
