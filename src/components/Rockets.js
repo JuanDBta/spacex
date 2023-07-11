@@ -24,6 +24,7 @@ const Rockets = () => {
           <div className={styles.content}>
             <h4 className={styles.name}>{rocket.rocket_name}</h4>
             <p className={styles.description}>{rocket.description}</p>
+            <button type="submit" className={styles.reserve}>Reserve Rocket</button>
           </div>
         </div>
       ))}

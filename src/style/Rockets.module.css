@@ -35,3 +35,21 @@
 .description {
   margin: 0;
 }
+
+.reserve {
+  color: white;
+  background-color: black;
+  width: 10vw;
+  height: 2vw;
+  margin-top: 1vw;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.reserve:hover {
+  background-color: white;
+  color: rgb(184, 175, 175);
+  border: 1px rgb(184, 175, 175) solid;
+
+}
