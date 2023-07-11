@@ -74,3 +74,20 @@
   margin-top: 15vw;
   margin-left: 45vw;
 }
+
+.cancelled {
+  background-color: white;
+  color: rgb(184, 175, 175);
+  border: 1px rgb(184, 175, 175) solid;
+  cursor: pointer;
+  width: 10vw;
+  height: 2vw;
+  margin-top: 1vw;
+  border-radius: 4px;
+}
+
+.cancelled:hover {
+  background-color: black;
+  color: white;
+  border: none;
+}

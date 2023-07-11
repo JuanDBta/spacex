@@ -35,7 +35,7 @@ const Rockets = () => {
             {rocket.reserved ? (
               <button
                 type="button"
-                className={styles.cancelReservation}
+                className={styles.cancelled}
                 onClick={() => handleReserveRocket(rocket.id, rocket.reserved)}
               >
                 Cancel Reservation
@@ -43,7 +43,7 @@ const Rockets = () => {
             ) : (
               <button
                 type="button"
-                className={styles.reserveRocket}
+                className={styles.reserve}
                 onClick={() => handleReserveRocket(rocket.id, rocket.reserved)}
               >
                 Reserve Rocket
