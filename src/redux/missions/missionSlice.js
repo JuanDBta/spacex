@@ -23,6 +23,14 @@ export const joinmission = createAsyncThunk('missions/joinmission', async (id) =
     return error.message;
   }
 });
+export const leavemission = createAsyncThunk('missions/leavemission', async (id) => {
+  try {
+    await axios.get(`${url}/${id}`);
+    return id;
+  } catch (error) {
+    return error.message;
+  }
+});
 const missionSlice = createSlice({
   name: 'missions',
   initialState,
@@ -53,6 +61,14 @@ const missionSlice = createSlice({
       const newState = state.missions.map((mission) => {
         if (mission.id !== id) return mission;
         return { ...mission, reserved: true };
+      });
+      state.missions = newState;
+    });
+    builder.addCase(leavemission.fulfilled, (state, action) => {
+      const id = action.payload;
+      const newState = state.missions.map((mission) => {
+        if (mission.id !== id) return mission;
+        return { ...mission, reserved: false };
       });
       state.missions = newState;
     });
