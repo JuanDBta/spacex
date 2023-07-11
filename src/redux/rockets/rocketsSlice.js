@@ -18,7 +18,6 @@ export const getRockets = createAsyncThunk('rockets/getRockets', async () => {
 });
 
 export const reserveRocket = createAsyncThunk('rockets/reserveRocket', async (rocketId) => {
-  // Simulated API call to reserve the rocket
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return rocketId;
 });
