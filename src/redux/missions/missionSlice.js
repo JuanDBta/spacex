@@ -15,6 +15,14 @@ export const fetchmissions = createAsyncThunk('missions/fetchmission', async () 
     return error.message;
   }
 });
+export const joinmission = createAsyncThunk('missions/joinmission', async (id) => {
+  try {
+    await axios.get(`${url}/${id}`);
+    return id;
+  } catch (error) {
+    return error.message;
+  }
+});
 const missionSlice = createSlice({
   name: 'missions',
   initialState,
@@ -39,6 +47,14 @@ const missionSlice = createSlice({
     builder.addCase(fetchmissions.rejected, (state, action) => {
       state.isloading = false;
       state.error = action.error.message;
+    });
+    builder.addCase(joinmission.fulfilled, (state, action) => {
+      const id = action.payload;
+      const newState = state.missions.map((mission) => {
+        if (mission.id !== id) return mission;
+        return { ...mission, reserved: true };
+      });
+      state.missions = newState;
     });
   },
 
