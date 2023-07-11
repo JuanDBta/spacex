@@ -1,0 +1,37 @@
+.rockets {
+    border-top: 1px rgb(202, 190, 190) solid;
+    padding-top: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.item {
+    margin-left: 10vw;
+    background-color: white;
+    margin-right: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 2vw;
+    height: 10vw;
+    border: 1px black solid;
+    padding: 1.5vw;
+}
+
+.content {
+    margin-left: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.name {
+  height: 2.5vw;
+  margin: 0;
+}
+
+.description {
+  margin: 0;
+}
