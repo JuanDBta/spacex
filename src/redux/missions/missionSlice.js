@@ -43,4 +43,7 @@ const missionSlice = createSlice({
   },
  
 });
+export const getMissions = (state) => state.missions.missions;
+export const getLoading = (state) => state.missions.isloading;
+export const getError = (state) => state.missions.error;
 export default missionSlice.reducer;
