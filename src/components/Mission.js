@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useMemo } from 'react';
 import {
   fetchmissions, getError, getLoading, getMissions, joinmission,
+  leavemission,
 } from '../redux/missions/missionSlice';
 import '../style/mission.css';
 
@@ -47,7 +48,7 @@ function Mission() {
                 {mission.reserved === false ? (
                   <button type="button" className="join" onClick={() => dispatch(joinmission(mission.id))}>JOIN MISSION</button>
                 ) : (
-                  <button type="button" className="leave">LEAVE MISSION</button>
+                  <button type="button" className="leave" onClick={() => dispatch(leavemission(mission.id))}>LEAVE MISSION</button>
                 )}
               </td>
             </tr>
