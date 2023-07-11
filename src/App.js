@@ -1,37 +1,29 @@
 import React from 'react';
-import {
-  BrowserRouter as Router, Routes, Route, Link,
-} from 'react-router-dom';
-import Rockets from './components/Rockets';
-import Missions from './components/Missions';
-import Profile from './components/Profile';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import Logo from './spacex-logo.png';
+import './App.css';
+import NAVBAR from './components/NAVBAR';
+import Profile from './components/Profile';
+import Rockets from './components/Rockets';
+import Mission from './components/Mission';
 
 function App() {
   return (
-    <Router>
+    <>
       <header className="App-header">
-
         <div className="logo-title">
           <img src={Logo} className="App-logo" alt="logo" />
           <h1 className="title">Space Traveler´s Hub</h1>
         </div>
-
-        <nav className="navbar">
-          <li><Link to="/">Rockets</Link></li>
-          <li className="missions"><Link to="/Missions">Missions</Link></li>
-          <li><Link to="/Profile">My Profile</Link></li>
-        </nav>
+        <NAVBAR />
       </header>
-
       <Routes>
         <Route path="/" element={<Rockets />} />
-        <Route path="/Missions" element={<Missions />} />
+        <Route path="/Mission" element={<Mission />} />
         <Route path="/Profile" element={<Profile />} />
       </Routes>
+    </>
 
-    </Router>
   );
 }
 
