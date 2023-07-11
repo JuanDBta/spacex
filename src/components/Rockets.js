@@ -31,7 +31,12 @@ const Rockets = () => {
           <img src={rocket.flickr_images?.[0]} className={styles.image} width="150px" alt={rocket.rocket_name} />
           <div className={styles.content}>
             <h4 className={styles.name}>{rocket.rocket_name}</h4>
-            <p className={styles.description}>{rocket.description}</p>
+            <p className={styles.description}>
+              {rocket.reserved && (
+                <button type="button" className={styles.rocketreserved}>Reserved</button>
+              )}
+              {rocket.description}
+            </p>
             {rocket.reserved ? (
               <button
                 type="button"
