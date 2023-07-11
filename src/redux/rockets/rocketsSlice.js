@@ -17,6 +17,12 @@ export const getRockets = createAsyncThunk('rockets/getRockets', async () => {
   }));
 });
 
+export const reserveRocket = createAsyncThunk('rockets/reserveRocket', async (rocketId) => {
+  // Simulated API call to reserve the rocket
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return rocketId;
+});
+
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
@@ -33,6 +39,25 @@ const rocketsSlice = createSlice({
         state.rockets = action.payload;
       })
       .addCase(getRockets.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(reserveRocket.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(reserveRocket.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const reservedRocketId = action.payload;
+        state.rockets = state.rockets.map((rocket) => {
+          if (rocket.id !== reservedRocketId) {
+            return rocket;
+          }
+          return { ...rocket, reserved: true };
+        });
+      })
+      .addCase(reserveRocket.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       });
