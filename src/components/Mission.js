@@ -40,15 +40,20 @@ function Mission() {
               <td key={mission.mission_id} className="mission-name">{mission.name}</td>
               <td key={mission.mission_id} className="description">{mission.description}</td>
               <td key={mission.mission_id}>
-
-                {mission.reserved === false
-                  ? <span className="notmemebr">Not A MEMBER</span> : <span className="memeber">ACTIVE MEMBER</span>}
+                {mission.reserved && <span className="memeber">ACTIVE MEMBER</span>}
+                {!mission.reserved && <span className="notmemebr">Not A MEMBER</span>}
               </td>
               <td key={mission.mission_id}>
-                {mission.reserved === false ? (
-                  <button type="button" className="join" onClick={() => dispatch(joinmission(mission.id))}>JOIN MISSION</button>
+                {mission.reserved ? (
+                  <button type="button" className="leave" onClick={() => dispatch(leavemission(mission.id))}>
+                    LEAVE MISSION
+                  </button>
                 ) : (
-                  <button type="button" className="leave" onClick={() => dispatch(leavemission(mission.id))}>LEAVE MISSION</button>
+                  !mission.reserved && (
+                  <button type="button" className="join" onClick={() => dispatch(joinmission(mission.id))}>
+                    JOIN MISSION
+                  </button>
+                  )
                 )}
               </td>
             </tr>
