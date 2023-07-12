@@ -37,7 +37,7 @@ const Rockets = () => {
               )}
               {rocket.description}
             </p>
-            {rocket.reserved ? (
+            {rocket.reserved && (
               <button
                 type="button"
                 className={styles.cancelled}
@@ -45,7 +45,8 @@ const Rockets = () => {
               >
                 Cancel Reservation
               </button>
-            ) : (
+            )}
+            {!rocket.reserved && (
               <button
                 type="button"
                 className={styles.reserve}
