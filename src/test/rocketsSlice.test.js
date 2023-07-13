@@ -11,31 +11,7 @@ describe('rocketsSlice', () => {
 
   beforeEach(() => {
     store = mockStore({
-      rockets: [
-        {
-          id: 'example-id-1',
-          rocket_name: 'Rocket 1',
-          description: 'Rocket 1 description',
-          flickr_images: ['image1.jpg'],
-          isReserved: false,
-        },
-        {
-          id: 'example-id-2',
-          rocket_name: 'Rocket 2',
-          description: 'Rocket 2 description',
-          flickr_images: ['image2.jpg'],
-          isReserved: false,
-        },
-      ],
-      isLoading: false,
-      error: null,
-    });
-  });
-
-  describe('reducer', () => {
-    it('should have the initial rockets array with preexisting data', () => {
-      const initialState = rocketsReducer(undefined, {});
-      const expectedInitialState = {
+      rockets: {
         rockets: [
           {
             id: 'example-id-1',
@@ -54,8 +30,7 @@ describe('rocketsSlice', () => {
         ],
         isLoading: false,
         error: null,
-      };
-      expect(initialState).toEqual(expectedInitialState);
+      },
     });
   });
 

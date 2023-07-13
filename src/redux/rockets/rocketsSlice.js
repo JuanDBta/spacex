@@ -1,22 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  rockets: [
-    {
-      id: 'example-id-1',
-      rocket_name: 'Rocket 1',
-      description: 'Rocket 1 description',
-      flickr_images: ['image1.jpg'],
-      isReserved: false,
-    },
-    {
-      id: 'example-id-2',
-      rocket_name: 'Rocket 2',
-      description: 'Rocket 2 description',
-      flickr_images: ['image2.jpg'],
-      isReserved: false,
-    },
-  ],
+  rockets: [],
   isLoading: false,
   error: null,
 };
