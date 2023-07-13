@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import rocketsReducer, {
+import {
   getRockets,
 } from '../redux/rockets/rocketsSlice';
 
