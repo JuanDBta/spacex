@@ -78,7 +78,7 @@ Coming soon!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Coming soon...
+[Space X](https://spacex-4e71.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,7 +130,7 @@ npm run test
 
 ### Deployment
 
-You can deploy this project using: Project not yet complete
+You can deploy this project using:<br>[Space X](https://spacex-4e71.onrender.com/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
