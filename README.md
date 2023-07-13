@@ -140,7 +140,7 @@ You can deploy this project using:<br>[Space X](https://spacex-4e71.onrender.com
 👤 **Micronaut BETEL ANDARGE**
 
 - GitHub: [@beteland123](https://github.com/beteland123)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/betel-andarge-1b9446223)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/betelandarge)
 
 
 👤 **Micronaut JUAN DAVID DIAZ**
