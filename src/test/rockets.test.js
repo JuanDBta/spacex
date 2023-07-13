@@ -26,7 +26,7 @@ describe('Rockets', () => {
     render(
       <Provider store={store}>
         <Rockets />
-      </Provider>
+      </Provider>,
     );
 
     const rocketName = screen.queryByText('Falcon 9');
@@ -44,7 +44,7 @@ describe('Rockets', () => {
     render(
       <Provider store={store}>
         <Rockets />
-      </Provider>
+      </Provider>,
     );
 
     const loadingMessage = await screen.findByText('Loading...');
@@ -75,7 +75,7 @@ describe('Rockets', () => {
     render(
       <Provider store={store}>
         <Rockets />
-      </Provider>
+      </Provider>,
     );
 
     const rocket1Name = screen.getByText('Falcon 1');
