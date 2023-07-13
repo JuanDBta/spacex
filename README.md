@@ -64,6 +64,7 @@
 - **[Added /public]**
 - **[Added /src/components]**
 - **[Added /src/redux]**
+- **[Added /src/test]**
 - **[Added linters]**
 
 
@@ -138,7 +139,7 @@ You can deploy this project using: Project not yet complete
 
 👤 **Micronaut BETEL ANDARGE**
 
-- GitHub: [@JuanDBta](https://github.com/beteland123)
+- GitHub: [@beteland123](https://github.com/beteland123)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/betel-andarge-1b9446223)
 
 
