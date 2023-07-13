@@ -7,16 +7,15 @@ const initialState = {
       rocket_name: 'Rocket 1',
       description: 'Rocket 1 description',
       flickr_images: ['image1.jpg'],
-      reserved: false,
+      isReserved: false,
     },
     {
       id: 'example-id-2',
       rocket_name: 'Rocket 2',
       description: 'Rocket 2 description',
       flickr_images: ['image2.jpg'],
-      reserved: false,
+      isReserved: false,
     },
-    // ... Agregar más objetos de rockets si es necesario
   ],
   isLoading: false,
   error: null,
@@ -34,27 +33,39 @@ export const getRockets = createAsyncThunk('rockets/getRockets', async () => {
       rocket_name: rocket.rocket_name,
       description: rocket.description,
       flickr_images: rocket.flickr_images,
-      reserved: false,
+      isReserved: false,
     }));
   } catch (error) {
     throw new Error(error.message);
   }
 });
 
-export const reserveRocket = createAsyncThunk('rockets/reserveRocket', async (rocketId) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return rocketId;
-});
-
-export const cancelRocketReservation = createAsyncThunk('rockets/cancelRocketReservation', async (rocketId) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return rocketId;
-});
-
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
-  reducers: {},
+  reducers: {
+    reserveRocket: (state, action) => {
+      const id = parseInt(action.payload, 10);
+      const newRockets = state.rockets.map((rocket) => {
+        if (rocket.id === id) {
+          return { ...rocket, isReserved: true };
+        }
+        return rocket;
+      });
+      state.rockets = newRockets;
+    },
+
+    cancelReservation: (state, action) => {
+      const id = parseInt(action.payload, 10);
+      const newRockets = state.rockets.map((rocket) => {
+        if (rocket.id === id) {
+          return { ...rocket, isReserved: false };
+        }
+        return rocket;
+      });
+      state.rockets = newRockets;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getRockets.pending, (state) => {
@@ -69,46 +80,9 @@ const rocketsSlice = createSlice({
       .addCase(getRockets.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-      })
-      .addCase(reserveRocket.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(reserveRocket.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        const reservedRocketId = action.payload;
-        state.rockets = state.rockets.map((rocket) => {
-          if (rocket.id !== reservedRocketId) {
-            return rocket;
-          }
-          return { ...rocket, reserved: true };
-        });
-      })
-      .addCase(reserveRocket.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message;
-      })
-      .addCase(cancelRocketReservation.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(cancelRocketReservation.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        const canceledRocketId = action.payload;
-        state.rockets = state.rockets.map((rocket) => {
-          if (rocket.id !== canceledRocketId) {
-            return rocket;
-          }
-          return { ...rocket, reserved: false };
-        });
-      })
-      .addCase(cancelRocketReservation.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message;
       });
   },
 });
 
+export const { reserveRocket, cancelReservation } = rocketsSlice.actions;
 export default rocketsSlice.reducer;

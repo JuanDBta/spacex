@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import rocketsReducer, {
   getRockets,
   reserveRocket,
-  cancelRocketReservation,
+  cancelReservation,
 } from '../redux/rockets/rocketsSlice';
 
 const mockStore = configureStore([thunk]);
@@ -28,7 +28,7 @@ describe('rocketsSlice', () => {
           flickr_images: ['image2.jpg'],
           reserved: false,
         },
-        // ... Agregar más objetos de rockets si es necesario
+
       ],
       isLoading: false,
       error: null,
@@ -54,15 +54,13 @@ describe('rocketsSlice', () => {
             flickr_images: ['image2.jpg'],
             reserved: false,
           },
-          // ... Agregar más objetos de rockets si es necesario
+
         ],
         isLoading: false,
         error: null,
       };
       expect(initialState).toEqual(expectedInitialState);
     });
-
-    // Resto de las pruebas del reducer
   });
 
   describe('getRockets', () => {
@@ -141,7 +139,7 @@ describe('rocketsSlice', () => {
 
       const updatedState = rocketsReducer(store.getState(), actions[1]);
       const reservedRocket = updatedState.rockets.find((rocket) => rocket.id === rocketId);
-      expect(reservedRocket.reserved).toBe(true);
+      expect(reservedRocket.isReserved).toBe(true);
     });
   });
 
@@ -149,16 +147,16 @@ describe('rocketsSlice', () => {
     it('should cancel a rocket reservation and update state', async () => {
       const rocketId = 'example-id-1';
 
-      await store.dispatch(cancelRocketReservation(rocketId));
+      await store.dispatch(cancelReservation(rocketId));
 
       const actions = store.getActions();
-      expect(actions[0].type).toEqual(cancelRocketReservation.pending.type);
-      expect(actions[1].type).toEqual(cancelRocketReservation.fulfilled.type);
+      expect(actions[0].type).toEqual(cancelReservation.pending.type);
+      expect(actions[1].type).toEqual(cancelReservation.fulfilled.type);
       expect(actions[1].payload).toEqual(rocketId);
 
       const updatedState = rocketsReducer(store.getState(), actions[1]);
       const canceledRocket = updatedState.rockets.find((rocket) => rocket.id === rocketId);
-      expect(canceledRocket.reserved).toBe(false);
+      expect(canceledRocket.isReserved).toBe(false);
     });
   });
 });
