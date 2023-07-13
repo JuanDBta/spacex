@@ -1,0 +1,53 @@
+.App-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App-logo {
+  height: 3.5vw;
+}
+
+.logo-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 2vw;
+}
+
+.title {
+  margin-left: 2vw;
+}
+
+.navbar {
+  margin-right: 2vw;
+}
+
+.rockets-container {
+  background-color: rgb(120, 174, 236);
+}
+
+nav .active {
+  text-decoration: underline;
+}
+
+li {
+  list-style-type: none;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.missions {
+  border-right: 2px black solid;
+  padding-right: 1vw;
+}
