@@ -9,7 +9,7 @@ import styles from '../style/Profile.module.css';
 function Profile() {
   const rockets = useSelector((state) => state.rockets.rockets);
 
-  const reservedRockets = rockets.filter((rocket) => rocket.reserved);
+  const reservedRockets = rockets.filter((rocket) => rocket.isReserved);
   const missions = useSelector(getMissions);
   const reservedMissions = missions.filter((mission) => mission.reserved);
   return (

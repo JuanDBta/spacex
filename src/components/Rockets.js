@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getRockets, reserveRocket, cancelRocketReservation } from '../redux/rockets/rocketsSlice';
+import { getRockets, reserveRocket, cancelReservation } from '../redux/rockets/rocketsSlice';
 import styles from '../style/Rockets.module.css';
 
 const Rockets = () => {
@@ -9,12 +9,14 @@ const Rockets = () => {
   const isLoading = useSelector((state) => state.rockets.isLoading);
 
   useEffect(() => {
-    dispatch(getRockets());
-  }, [dispatch]);
+    if (rockets.length === 0) {
+      dispatch(getRockets());
+    }
+  }, [dispatch, rockets.length]);
 
   const handleReserveRocket = (rocketId, reserved) => {
     if (reserved) {
-      dispatch(cancelRocketReservation(rocketId));
+      dispatch(cancelReservation(rocketId));
     } else {
       dispatch(reserveRocket(rocketId));
     }
@@ -32,25 +34,25 @@ const Rockets = () => {
           <div className={styles.content}>
             <h4 className={styles.name}>{rocket.rocket_name}</h4>
             <p className={styles.description}>
-              {rocket.reserved && (
+              {rocket.isReserved && (
                 <button type="button" className={styles.rocketreserved}>Reserved</button>
               )}
               {rocket.description}
             </p>
-            {rocket.reserved && (
+            {rocket.isReserved && (
               <button
                 type="button"
                 className={styles.cancelled}
-                onClick={() => handleReserveRocket(rocket.id, rocket.reserved)}
+                onClick={() => handleReserveRocket(rocket.id, rocket.isReserved)}
               >
                 Cancel Reservation
               </button>
             )}
-            {!rocket.reserved && (
+            {!rocket.isReserved && (
               <button
                 type="button"
                 className={styles.reserve}
-                onClick={() => handleReserveRocket(rocket.id, rocket.reserved)}
+                onClick={() => handleReserveRocket(rocket.id, rocket.isReserved)}
               >
                 Reserve Rocket
               </button>

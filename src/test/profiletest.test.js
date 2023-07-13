@@ -12,8 +12,8 @@ describe('Profile component', () => {
     const store = mockStore({
       rockets: {
         rockets: [
-          { id: '1', rocket_name: 'Falcon 1', reserved: true },
-          { id: '2', rocket_name: 'Falcon 9', reserved: false },
+          { id: '1', rocket_name: 'Falcon 1', isReserved: true },
+          { id: '2', rocket_name: 'Falcon 9', isReserved: false },
         ],
       },
       missions: {
