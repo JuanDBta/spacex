@@ -13,8 +13,10 @@ function Mission() {
   const missionError = useSelector(getError);
 
   useEffect(() => {
-    dispatch(fetchmissions());
-  }, [dispatch]);
+    if (missions.length === 0) {
+      dispatch(fetchmissions());
+    }
+  }, [dispatch, missions.length]);
   // memoize the missions data and use it to render the component on every navigation change.
   const memoizedMissions = useMemo(() => missions, [missions]);
   if (missionLoading === true) {
