@@ -2,13 +2,13 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import Rockets from '../components/Rockets';
+import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
 
 describe('Rockets', () => {
-  test('renders rocket name', async () => {
+  test('renders rocket name', () => {
     const store = mockStore({
       rockets: {
         rockets: [
@@ -16,7 +16,7 @@ describe('Rockets', () => {
             id: '1',
             rocket_name: 'Falcon 9',
             description: 'Sample description',
-            reserved: false,
+            isReserved: false,
           },
         ],
         isLoading: false,
@@ -33,7 +33,7 @@ describe('Rockets', () => {
     expect(rocketName).toBeTruthy();
   });
 
-  test('renders loading message when rockets are being fetched', async () => {
+  test('renders loading message when rockets are being fetched', () => {
     const store = mockStore({
       rockets: {
         rockets: [],
@@ -47,11 +47,11 @@ describe('Rockets', () => {
       </Provider>,
     );
 
-    const loadingMessage = await screen.findByText('Loading...');
+    const loadingMessage = screen.getByText('Loading...');
     expect(loadingMessage).toBeTruthy();
   });
 
-  test('renders rocket data when rockets have been fetched', async () => {
+  test('renders rocket data when rockets have been fetched', () => {
     const store = mockStore({
       rockets: {
         rockets: [
@@ -59,13 +59,13 @@ describe('Rockets', () => {
             id: '1',
             rocket_name: 'Falcon 1',
             description: 'Description 1',
-            reserved: true,
+            isReserved: true,
           },
           {
             id: '2',
             rocket_name: 'Falcon 9',
             description: 'Description 2',
-            reserved: false,
+            isReserved: false,
           },
         ],
         isLoading: false,
