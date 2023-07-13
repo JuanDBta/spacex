@@ -1,7 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  rockets: [],
+  rockets: [
+    {
+      id: 'example-id-1',
+      rocket_name: 'Rocket 1',
+      description: 'Rocket 1 description',
+      flickr_images: ['image1.jpg'],
+      reserved: false,
+    },
+    {
+      id: 'example-id-2',
+      rocket_name: 'Rocket 2',
+      description: 'Rocket 2 description',
+      flickr_images: ['image2.jpg'],
+      reserved: false,
+    },
+    // ... Agregar más objetos de rockets si es necesario
+  ],
   isLoading: false,
   error: null,
 };
@@ -12,8 +28,8 @@ export const getRockets = createAsyncThunk('rockets/getRockets', async () => {
     if (!response.ok) {
       throw new Error('Failed to fetch rockets');
     }
-    const rockets = await response.json();
-    return rockets.map((rocket) => ({
+    const data = await response.json();
+    return data.map((rocket) => ({
       id: rocket.id,
       rocket_name: rocket.rocket_name,
       description: rocket.description,
@@ -21,25 +37,19 @@ export const getRockets = createAsyncThunk('rockets/getRockets', async () => {
       reserved: false,
     }));
   } catch (error) {
-    throw new Error('Failed to fetch rockets');
+    throw new Error(error.message);
   }
 });
 
-export const reserveRocket = createAsyncThunk(
-  'rockets/reserveRocket',
-  async (rocketId) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    return rocketId;
-  },
-);
+export const reserveRocket = createAsyncThunk('rockets/reserveRocket', async (rocketId) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return rocketId;
+});
 
-export const cancelRocketReservation = createAsyncThunk(
-  'rockets/cancelRocketReservation',
-  async (rocketId) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    return rocketId;
-  },
-);
+export const cancelRocketReservation = createAsyncThunk('rockets/cancelRocketReservation', async (rocketId) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return rocketId;
+});
 
 const rocketsSlice = createSlice({
   name: 'rockets',
