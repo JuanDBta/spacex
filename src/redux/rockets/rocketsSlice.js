@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 const initialState = {
   rockets: [],
@@ -8,25 +7,39 @@ const initialState = {
 };
 
 export const getRockets = createAsyncThunk('rockets/getRockets', async () => {
-  const response = await axios.get('https://api.spacexdata.com/v3/rockets');
-  return response.data.map((rocket) => ({
-    id: rocket.id,
-    rocket_name: rocket.rocket_name,
-    description: rocket.description,
-    flickr_images: rocket.flickr_images,
-    reserved: false,
-  }));
+  try {
+    const response = await fetch('https://api.spacexdata.com/v3/rockets');
+    if (!response.ok) {
+      throw new Error('Failed to fetch rockets');
+    }
+    const rockets = await response.json();
+    return rockets.map((rocket) => ({
+      id: rocket.id,
+      rocket_name: rocket.rocket_name,
+      description: rocket.description,
+      flickr_images: rocket.flickr_images,
+      reserved: false,
+    }));
+  } catch (error) {
+    throw new Error('Failed to fetch rockets');
+  }
 });
 
-export const reserveRocket = createAsyncThunk('rockets/reserveRocket', async (rocketId) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return rocketId;
-});
+export const reserveRocket = createAsyncThunk(
+  'rockets/reserveRocket',
+  async (rocketId) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return rocketId;
+  },
+);
 
-export const cancelRocketReservation = createAsyncThunk('rockets/cancelRocketReservation', async (rocketId) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return rocketId;
-});
+export const cancelRocketReservation = createAsyncThunk(
+  'rockets/cancelRocketReservation',
+  async (rocketId) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return rocketId;
+  },
+);
 
 const rocketsSlice = createSlice({
   name: 'rockets',
