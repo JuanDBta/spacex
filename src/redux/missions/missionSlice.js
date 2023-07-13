@@ -25,7 +25,7 @@ export const fetchmissions = createAsyncThunk('missions/fetchmission', async () 
 
 export const joinmission = createAsyncThunk('missions/joinmission', async (id) => {
   try {
-    await fetch(`${url}/${id}`, { method: 'POST' });
+    await fetch(`${url}/${id}`);
     return id;
   } catch (error) {
     return error.message;
@@ -34,7 +34,7 @@ export const joinmission = createAsyncThunk('missions/joinmission', async (id) =
 
 export const leavemission = createAsyncThunk('missions/leavemission', async (id) => {
   try {
-    await fetch(`${url}/${id}`, { method: 'POST' });
+    await fetch(`${url}/${id}`);
     return id;
   } catch (error) {
     return error.message;
