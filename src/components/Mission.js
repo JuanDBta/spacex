@@ -18,7 +18,7 @@ function Mission() {
   // memoize the missions data and use it to render the component on every navigation change.
   const memoizedMissions = useMemo(() => missions, [missions]);
   if (missionLoading === true) {
-    return <div>Loading..</div>;
+    return <div>Loading....</div>;
   }
   if (missionError !== '') {
     return <div>error fetching data</div>;

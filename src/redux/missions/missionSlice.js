@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 const url = 'https://api.spacexdata.com/v3/missions';
 const initialState = {
@@ -7,30 +6,41 @@ const initialState = {
   isloading: false,
   error: '',
 };
+
 export const fetchmissions = createAsyncThunk('missions/fetchmission', async () => {
   try {
-    const response = await axios.get(url);
-    return response.data;
+    const response = await fetch(url);
+    const missions = await response.json();
+    const selectedMission = missions.map((mission) => ({
+      id: mission.mission_id,
+      name: mission.mission_name,
+      description: mission.description,
+      reserved: false,
+    }));
+    return selectedMission;
   } catch (error) {
     return error.message;
   }
 });
+
 export const joinmission = createAsyncThunk('missions/joinmission', async (id) => {
   try {
-    await axios.get(`${url}/${id}`);
+    await fetch(`${url}/${id}`, { method: 'POST' });
     return id;
   } catch (error) {
     return error.message;
   }
 });
+
 export const leavemission = createAsyncThunk('missions/leavemission', async (id) => {
   try {
-    await axios.get(`${url}/${id}`);
+    await fetch(`${url}/${id}`, { method: 'POST' });
     return id;
   } catch (error) {
     return error.message;
   }
 });
+
 const missionSlice = createSlice({
   name: 'missions',
   initialState,
@@ -41,16 +51,7 @@ const missionSlice = createSlice({
     });
     builder.addCase(fetchmissions.fulfilled, (state, action) => {
       state.isloading = false;
-      const allmissions = action.payload;
-      const selectedMission = allmissions.map((mission) => (
-        {
-          id: mission.mission_id,
-          name: mission.mission_name,
-          description: mission.description,
-          reserved: false,
-        }
-      ));
-      state.missions = selectedMission;
+      state.missions = action.payload;
     });
     builder.addCase(fetchmissions.rejected, (state, action) => {
       state.isloading = false;
@@ -73,9 +74,10 @@ const missionSlice = createSlice({
       state.missions = newState;
     });
   },
-
 });
+
 export const getMissions = (state) => state.missions.missions;
 export const getLoading = (state) => state.missions.isloading;
 export const getError = (state) => state.missions.error;
+
 export default missionSlice.reducer;
