@@ -114,7 +114,7 @@ Install this project executing the following command:
 
 ### Usage
 
-To run the project, go to /bookstore-project directory and execute the following command:
+To run the project, go to /spacex directory and execute the following command:
 
 ```sh
 npm start
